@@ -7,7 +7,7 @@
   - Apache
   - MySQL/MariaDB
   - PHP
-![LAMP](/assets/img/portada.jpg)
+![LAMP](/img/portada.jpg)
 
 ## Linux 
 
