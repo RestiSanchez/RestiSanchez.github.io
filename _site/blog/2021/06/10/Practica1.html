@@ -1,0 +1,305 @@
+
+<h1 id="asir2-iaw-practica01">ASIR2 IAW Practica01</h1>
+<h2 id="practica-01---pila-lamp">Practica 01 - Pila L.A.M.P.</h2>
+
+<p><em>L.A.M.P.</em> Es el acrónimo utilizado para describir un sistema de infraestructura de Internet que usa las siguientes herramientas:</p>
+<ul>
+  <li>Linux</li>
+  <li>Apache</li>
+  <li>MySQL/MariaDB</li>
+  <li>PHP
+<img src="/assets/img/portada.jpg" alt="LAMP" /></li>
+</ul>
+
+<h2 id="linux">Linux</h2>
+
+<p>Los siguientes comandos básicos son los utilizados en la práctica , es recomendable e incluso obligatorio utilzar sudo:</p>
+
+<ul>
+  <li>
+    <h4 id="apt-update">apt update</h4>
+    <p>Actualiza la lista de paquetes</p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">sudo apt update</code></p>
+
+<ul>
+  <li>
+    <h4 id="apt-upgrade">apt upgrade</h4>
+    <p>Actualiza los paquetes instalados a sus ultimas versiones disponibles</p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">sudo apt upgrade</code></p>
+
+<ul>
+  <li>
+    <h4 id="apt-install">apt install</h4>
+    <p>Instala un paquete determinado</p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">sudo apt install</code></p>
+
+<ul>
+  <li>
+    <h4 id="apt-remove">apt remove</h4>
+    <p>Desinstala un paquete</p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">sudo apt remove</code></p>
+
+<h4 id="opcional-instalación-de-interfaz-gráfica">(OPCIONAL) Instalación de interfaz gráfica</h4>
+
+<p>Unity -&gt; <code class="language-plaintext highlighter-rouge">sudo apt install ubuntu-desktop</code></p>
+
+<p>GNOME -&gt; <code class="language-plaintext highlighter-rouge">sudo apt install ubuntu-gnome-desktop</code></p>
+
+<p>KDE -&gt; <code class="language-plaintext highlighter-rouge">sudo apt install kubuntu-desktop</code></p>
+
+<ul>
+  <li>
+    <h3 id="instalación-del-servidor-ssh">Instalación del servidor SSH</h3>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">sudo apt install ssh</code></p>
+
+<h4 id="como-iniciar--parar-y-consultar-el-servicio-ssh">Como iniciar , parar y consultar el servicio SSH</h4>
+
+<p><code class="language-plaintext highlighter-rouge">sudo systemctl start/stop/status ssh</code></p>
+
+<h2 id="apache">Apache</h2>
+
+<ul>
+  <li>
+    <h4 id="instalación-apache">Instalación Apache</h4>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">sudo apt install apache2</code></p>
+
+<h4 id="como-iniciar--parar-reiniciar--recargar-y-consultar-el-servicio-apache">Como iniciar , parar, reiniciar , recargar y consultar el servicio Apache</h4>
+
+<p><code class="language-plaintext highlighter-rouge">sudo systemctl start/stop/restart/reload/status apache2</code></p>
+
+<h4 id="archivos-de-configuración-de-apache">Archivos de configuración de Apache</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/* Archivos */
+├── apache2.conf
+├── envvars
+├── magic
+└── ports.conf
+
+/* Directorios */
+├── conf-available
+├── conf-enabled
+├── mods-available
+├── mods-enabled
+├── sites-available
+└── sites-enabled
+</code></pre></div></div>
+
+<h3 id="archivos-de-log-de-apache">Archivos de log de Apache</h3>
+
+<h4 id="accesslog">access.log</h4>
+<p>El servidor almacena en el registro de accceso información sobre todas las peticiones que procesa</p>
+
+<h4 id="errorlog">error.log</h4>
+<p>El registro de errores del servidor</p>
+
+<h4 id="mensajes-de-error-más-detallados">Mensajes de error más detallados</h4>
+<p>Necesitamos cambiar o añadir la linea LogLevel en el archivo de /etc/apache2/apache2.conf , los argumentos posibles son:</p>
+
+<p>emerg: Emergencias, no se puede utilizar el servidor.
+alert: Require acción inmediata.
+crit: Condiciones críticas.
+error: Condiciones de error.
+warn: Condiciones de advertencia. (Por defecto)
+notice: Condicón normal pero significativa.
+info: Informativa.
+debug: Mensajes de corrección de errores.</p>
+
+<h2 id="mysql-server">MySQL Server</h2>
+
+<ul>
+  <li>
+    <h3 id="instalación-de-mysql-server">Instalación de MySQL Server</h3>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install mysql-server
+</code></pre></div></div>
+
+<h4 id="como-iniciar-parar-y-consultar-el-estado-de-mysql">Como iniciar, parar y consultar el estado de MySQL</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl start/stop/restart/status mysql
+</code></pre></div></div>
+
+<h3 id="archivos-de-configuración-de-mysql-server">Archivos de configuración de MySQL Server</h3>
+<p>El principal /etc/mysql/mysql.cnf</p>
+
+<p>Existen otros archivos de configuración:</p>
+
+<ul>
+  <li>/etc/mysql/conf.d</li>
+  <li>/etc/mysql/mysql.conf.d/</li>
+</ul>
+
+<h3 id="archivos-de-log-de-mysql-server">Archivos de log de MySQL Server</h3>
+
+<ul>
+  <li>/var/log/mysql/error.log</li>
+</ul>
+
+<h3 id="como-acceder-a-mysql-server-desde-consola-con-root">Como acceder a MySQL Server desde consola con root</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo su 
+mysql -u root
+</code></pre></div></div>
+<h3 id="como-cambiar-la-contraseña-del-usuario-root">Como cambiar la contraseña del usuario root</h3>
+<p>Accedemos a la consola de MySQL como root y seleccionamos la base de datos mysql para ver los usuarios y el tipo de autenticación que tienen.</p>
+
+<p>Para cambiar la contraseña de root cambiamos el método de autenticación</p>
+
+<p><code class="language-plaintext highlighter-rouge">ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'nueva_contraseña';</code></p>
+
+<p>A continuación ejecutamos el siguiente comando para actualizar la contraseña</p>
+
+<p><code class="language-plaintext highlighter-rouge">FLUSH PRIVILEGES;</code></p>
+
+<h3 id="ejecutar-un-scriptsql-desde-consola">Ejecutar un script.sql desde consola</h3>
+
+<p>Desde consola linux:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql -u -p &lt; script.sql
+</code></pre></div></div>
+
+<p>Desde la consola de MySQL:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; source script.sql 
+</code></pre></div></div>
+
+<h3 id="usuarios-y-permisos-en-mysql-server-desde-consola">Usuarios y permisos en MySQL Server desde consola.</h3>
+<ul>
+  <li>
+    <h5 id="tipos-de-permisos-que-podemos-aplicar">Tipos de permisos que podemos aplicar.</h5>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>ALL PRIVILEGES: permite a un usuario de MySQL acceder a todas las bases de datos asignadas en el sistema.</p>
+  </li>
+  <li>
+    <p>CREATE: permite crear nuevas tablas o bases de datos.</p>
+  </li>
+  <li>
+    <p>DROP: permite eliminar tablas o bases de datos</p>
+  </li>
+  <li>
+    <p>DELETE: permite eliminar registros de tablas.</p>
+  </li>
+  <li>
+    <p>INSERT: permite insertar registros en tablas.</p>
+  </li>
+  <li>
+    <p>SELECT: permite leer registros en las tablas.</p>
+  </li>
+  <li>
+    <p>UPDATE: permite actualizar registros seleccionados en tablas.</p>
+  </li>
+  <li>
+    <p>GRANT OPTION: permite asignar privilegios a otros usuarios.</p>
+  </li>
+</ol>
+
+<ul>
+  <li>
+    <h4 id="crear-un-nuevo-usuario">Crear un nuevo usuario.</h4>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">
+ CREATE USER 'nombre_usuario'@'localhost' IDENTIFIED BY 'contraseña';
+</code></p>
+
+<ul>
+  <li>
+    <h4 id="eliminar-un-usuario">Eliminar un usuario</h4>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">
+DROP USER 'nombre_usuario'@'localhost';
+</code></p>
+<ul>
+  <li>
+    <h4 id="asignar-permisos-a-un-usuario">Asignar permisos a un usuario</h4>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">
+ GRANT [permiso] ON [nombre_base_de_datos].[nombre_tabla] TO 'nombre_usuario'@'localhost';
+</code></p>
+
+<p>Después de este comando habrá que ejecutar el siguiente comando para refrescar todos los privilegios</p>
+
+<p><code class="language-plaintext highlighter-rouge">
+ FLUSH PRIVILEGES;
+</code></p>
+
+<ul>
+  <li>
+    <h4 id="eliminar-permisos-a-un-usuario">Eliminar permisos a un usuario</h4>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">
+REVOKE [permiso] ON [nombre_base_de_datos].[nombre_tabla] FROM 'nombre_usuario'@'localhost';
+</code></p>
+
+<h2 id="php">PHP</h2>
+
+<ul>
+  <li>
+    <h3 id="instalación-de-módulos-php">Instalación de módulos PHP</h3>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">
+sudo apt install php libapache2-mod-php php-msyql
+</code></p>
+
+<h2 id="otras-herramientas-relacionadas-con-la-pila-lamp">Otras herramientas relacionadas con la pila LAMP</h2>
+
+<ul>
+  <li>
+    <h3 id="instalar-phpmyadmin-para-acceder-vía-web-a-mysql">Instalar phpMyAdmin para acceder vía web a MySQL</h3>
+  </li>
+</ul>
+
+<h4 id="instalación-de-phpmyadmin-con-apt">Instalación de phpMyAdmin con apt</h4>
+
+<p><code class="language-plaintext highlighter-rouge">
+sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl
+</code></p>
+
+<ul>
+  <li>
+    <h3 id="instalación-de-goaccess">Instalación de GoAccess</h3>
+  </li>
+</ul>
+
+<p>Para instalar la ultima versión de GoAccess añadimos los repositorios oficiales del proyecto</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | sudo tee -a /etc/apt/sources.list.d/goaccess.list
+
+wget -O - https://deb.goaccess.io/gnugpg.key | sudo apt-key add -
+
+sudo apt-get update
+
+sudo apt-get install goaccess
+</code></pre></div></div>
