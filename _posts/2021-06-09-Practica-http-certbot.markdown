@@ -20,7 +20,7 @@
 
 **Registrar un nombre de dominio** en algún proveedor de dominio gratuito. En mi caso en NO-IP.
 
-![IP CON DNS](assets/img/ip.png)
+![IP CON DNS](/img/ip.png)
 
 **Configuramos los registros DNS del proveedor de nombres de dominio** para que el nombre del dominio que se ha registrado pueda resolver hacia la dirección pública de la instancia en AWS.
 
